@@ -1,0 +1,76 @@
+name: Player API — JMeter Performance Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 11 * * 1'   # Monday 11:00 UTC (after Locust standalone at 12:00)
+
+jobs:
+  performance:
+    name: JMeter Load Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup JMeter
+        uses: QAInsights/setup-jmeter@v3.0
+        with:
+          jmeter-version: '5.6.3'
+
+      - name: Wake Railway instance (cold start isolation)
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            https://player-api-tests-production.up.railway.app/api/automationTask/getAll || true
+          sleep 5
+
+      - name: Run smoke test
+        run: |
+          mkdir -p results reports/smoke
+          jmeter -n \
+            -t jmeter/test-plans/smoke.jmx \
+            -q jmeter/properties/base.properties \
+            -l results/smoke.jtl \
+            -e -o reports/smoke/
+        env:
+          BASE_URL: player-api-tests-production.up.railway.app
+
+      - name: Run baseline test (main only)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p results reports/baseline
+          jmeter -n \
+            -t jmeter/test-plans/baseline.jmx \
+            -q jmeter/properties/base.properties \
+            -l results/baseline.jtl \
+            -e -o reports/baseline/
+
+      - name: Run stress test (main only, weekly)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'schedule'
+        run: |
+          mkdir -p results reports/stress
+          jmeter -n \
+            -t jmeter/test-plans/stress.jmx \
+            -q jmeter/properties/base.properties \
+            -l results/stress.jtl \
+            -e -o reports/stress/
+
+      - name: Upload JMeter HTML Dashboard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jmeter-dashboard
+          path: reports/
+          retention-days: 30
+
+      - name: Deploy smoke report to GitHub Pages
+        if: github.ref == 'refs/heads/main' && always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports/smoke
+          destination_dir: report
