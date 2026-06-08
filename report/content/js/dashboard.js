@@ -133,7 +133,7 @@ $(document).ready(function() {
         widgets: ['zebra']
     });
 
-    var data = {"OkPercent": 40.081591024987254, "KoPercent": 59.918408975012746};
+    var data = {"OkPercent": 40.298507462686565, "KoPercent": 59.701492537313435};
     var dataset = [
         {
             "label" : "FAIL",
@@ -173,7 +173,7 @@ $(document).ready(function() {
     });
 
     // Creates APDEX table
-    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.4008159102498725, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)", "F (Frustration threshold)", "Label"], "items": [{"data": [0.0, 500, 1500, "DELETE deleteOne"], "isController": false}, {"data": [1.0, 500, 1500, "POST Login"], "isController": false}, {"data": [0.0, 500, 1500, "POST Create Task"], "isController": false}, {"data": [1.0, 500, 1500, "GET getAll"], "isController": false}, {"data": [0.0, 500, 1500, "GET getOne"], "isController": false}, {"data": [0.0, 500, 1500, "GET getAll (cold start isolation)"], "isController": false}]}, function(index, item){
+    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.3805970149253731, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)", "F (Frustration threshold)", "Label"], "items": [{"data": [0.0, 500, 1500, "DELETE deleteOne"], "isController": false}, {"data": [0.9338235294117647, 500, 1500, "POST Login"], "isController": false}, {"data": [0.0, 500, 1500, "POST Create Task"], "isController": false}, {"data": [0.9552238805970149, 500, 1500, "GET getAll"], "isController": false}, {"data": [0.0, 500, 1500, "GET getOne"], "isController": false}, {"data": [0.0, 500, 1500, "GET getAll (cold start isolation)"], "isController": false}]}, function(index, item){
         switch(index){
             case 0:
                 item = item.toFixed(3);
@@ -187,7 +187,7 @@ $(document).ready(function() {
     }, [[0, 0]], 3);
 
     // Create statistics table
-    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 1961, 1175, 59.918408975012746, 71.79194288628247, 66, 1014, 72.0, 75.0, 76.0, 80.0, 63.070886401646725, 66.5386066954522, 22.661168618535317], "isController": false}, "titles": ["Label", "#Samples", "FAIL", "Error %", "Average", "Min", "Max", "Median", "90th pct", "95th pct", "99th pct", "Transactions/s", "Received", "Sent"], "items": [{"data": ["DELETE deleteOne", 391, 391, 100.0, 71.09718670076724, 66, 94, 72.0, 75.0, 76.0, 80.07999999999998, 13.196085048936888, 6.688250137107661, 4.755229866267297], "isController": false}, {"data": ["POST Login", 395, 0, 0.0, 72.34177215189871, 66, 224, 72.0, 75.0, 77.0, 149.64000000000033, 13.140385894876912, 4.722326180971391, 4.951035429141717], "isController": false}, {"data": ["POST Create Task", 392, 392, 100.0, 71.08163265306128, 66, 88, 72.0, 75.0, 76.0, 79.0, 13.114754098360656, 3.7781762295081966, 5.212602459016393], "isController": false}, {"data": ["GET getAll", 391, 0, 0.0, 70.94884910485928, 66, 82, 71.0, 75.0, 76.0, 80.0, 13.19385861312637, 47.827737472583095, 4.264811719672684], "isController": false}, {"data": ["GET getOne", 391, 391, 100.0, 71.07672634271108, 66, 94, 72.0, 75.0, 76.0, 80.0, 13.195194384449243, 6.687798716337068, 4.471418409574109], "isController": false}, {"data": ["GET getAll (cold start isolation)", 1, 1, 100.0, 1014.0, 1014, 1014, 1014.0, 1014.0, 1014.0, 1014.0, 0.9861932938856016, 0.21187746548323472, 0.16372349605522682], "isController": false}]}, function(index, item){
+    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 335, 200, 59.701492537313435, 430.513432835821, 393, 3106, 402.0, 450.4000000000002, 578.2, 862.3999999999999, 9.955719337870367, 12.63642678831466, 3.5627742001991143], "isController": false}, "titles": ["Label", "#Samples", "FAIL", "Error %", "Average", "Min", "Max", "Median", "90th pct", "95th pct", "99th pct", "Transactions/s", "Received", "Sent"], "items": [{"data": ["DELETE deleteOne", 65, 65, 100.0, 415.4769230769231, 394, 611, 401.0, 439.79999999999995, 560.9999999999998, 611.0, 2.3332615406705437, 1.319295343797114, 0.8407944419017876], "isController": false}, {"data": ["POST Login", 68, 0, 0.0, 448.4411764705882, 393, 1083, 402.0, 576.4, 854.65, 1083.0, 2.2928046395576236, 1.0098192308989142, 0.851207673730528], "isController": false}, {"data": ["POST Create Task", 68, 68, 100.0, 418.2941176470587, 393, 585, 403.0, 457.3, 572.4, 585.0, 2.347417840375587, 0.8665272887323944, 0.9330068955399061], "isController": false}, {"data": ["GET getAll", 67, 0, 0.0, 421.20895522388076, 393, 604, 405.0, 491.80000000000007, 584.9999999999999, 604.0, 2.3437226711442265, 10.347627144768602, 0.7575900431140029], "isController": false}, {"data": ["GET getOne", 66, 66, 100.0, 408.3484848484848, 393, 603, 400.5, 412.3, 436.79999999999995, 603.0, 2.37103032044834, 1.34065093314413, 0.8034643761675528], "isController": false}, {"data": ["GET getAll (cold start isolation)", 1, 1, 100.0, 3106.0, 3106, 3106, 3106.0, 3106.0, 3106.0, 3106.0, 0.3219575016097875, 0.08803525434642627, 0.05344997585318738], "isController": false}]}, function(index, item){
         switch(index){
             // Errors pct
             case 3:
@@ -217,7 +217,7 @@ $(document).ready(function() {
     }, [[0, 0]], 0, summaryTableHeader);
 
     // Create error table
-    createTable($("#errorsTable"), {"supportsControllersDiscrimination": false, "titles": ["Type of error", "Number of errors", "% in errors", "% in all samples"], "items": [{"data": ["400/Bad Request", 1174, 99.91489361702128, 59.86741458439572], "isController": false}, {"data": ["401/Unauthorized", 1, 0.0851063829787234, 0.05099439061703213], "isController": false}]}, function(index, item){
+    createTable($("#errorsTable"), {"supportsControllersDiscrimination": false, "titles": ["Type of error", "Number of errors", "% in errors", "% in all samples"], "items": [{"data": ["400/Bad Request", 199, 99.5, 59.40298507462686], "isController": false}, {"data": ["401/Unauthorized", 1, 0.5, 0.29850746268656714], "isController": false}]}, function(index, item){
         switch(index){
             case 2:
             case 3:
@@ -228,7 +228,7 @@ $(document).ready(function() {
     }, [[1, 1]]);
 
         // Create top5 errors by sampler
-    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 1961, 1175, "400/Bad Request", 1174, "401/Unauthorized", 1, "", "", "", "", "", ""], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": ["DELETE deleteOne", 391, 391, "400/Bad Request", 391, "", "", "", "", "", "", "", ""], "isController": false}, {"data": [], "isController": false}, {"data": ["POST Create Task", 392, 392, "400/Bad Request", 392, "", "", "", "", "", "", "", ""], "isController": false}, {"data": [], "isController": false}, {"data": ["GET getOne", 391, 391, "400/Bad Request", 391, "", "", "", "", "", "", "", ""], "isController": false}, {"data": ["GET getAll (cold start isolation)", 1, 1, "401/Unauthorized", 1, "", "", "", "", "", "", "", ""], "isController": false}]}, function(index, item){
+    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 335, 200, "400/Bad Request", 199, "401/Unauthorized", 1, "", "", "", "", "", ""], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": ["DELETE deleteOne", 65, 65, "400/Bad Request", 65, "", "", "", "", "", "", "", ""], "isController": false}, {"data": [], "isController": false}, {"data": ["POST Create Task", 68, 68, "400/Bad Request", 68, "", "", "", "", "", "", "", ""], "isController": false}, {"data": [], "isController": false}, {"data": ["GET getOne", 66, 66, "400/Bad Request", 66, "", "", "", "", "", "", "", ""], "isController": false}, {"data": ["GET getAll (cold start isolation)", 1, 1, "401/Unauthorized", 1, "", "", "", "", "", "", "", ""], "isController": false}]}, function(index, item){
         return item;
     }, [[0, 0]], 0);
 
